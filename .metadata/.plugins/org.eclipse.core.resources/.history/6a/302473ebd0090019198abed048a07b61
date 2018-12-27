@@ -1,0 +1,18 @@
+package pages;
+
+import org.openqa.selenium.By;
+
+import base.BasePage;
+
+public class AddressPage extends BasePage {
+
+	public ShippingPage ProceedToCheckout() {
+		super.dsl.ClickOnButton("Proceed to checkout");
+				
+		return new ShippingPage();		
+	}
+	
+	public String GetFullName() {
+		return dsl.GetElementText(By.xpath("//ul[@id='address_delivery']/li[@class='address_firstname address_lastname']"));
+	}	
+}

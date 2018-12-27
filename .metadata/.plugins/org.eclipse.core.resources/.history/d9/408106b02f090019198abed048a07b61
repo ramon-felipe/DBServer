@@ -1,0 +1,29 @@
+package driver;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DriverFactory {
+
+	private static WebDriver driver = null;
+	
+	public static WebDriver GetDriver() {
+		if(driver == null) {
+			driver = SetDriver();
+		}
+		
+		return driver;
+	}
+	
+	private static WebDriver SetDriver() {
+		System.setProperty("webdriver.chrome.driver", "/DBServer.Ramon.com/src/test/resources/drivers/chromedriver.exe");
+		driver = new ChromeDriver();
+		
+		return driver;
+	}
+	
+	public static void KillDriver() {
+		driver.quit();
+	}
+	
+}

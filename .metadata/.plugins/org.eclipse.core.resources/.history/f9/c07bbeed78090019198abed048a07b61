@@ -1,0 +1,30 @@
+package tests;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import base.BaseTest;
+import pages.*;
+
+public class ComprasTest extends BaseTest {
+
+	@Test
+	public void RealizarCompra() {
+		
+		final String productToBuy = "Blouse";
+		String productDescriptionOnCart = new HomePage()
+												.GoTo("http://www.automationpractice.com")
+												.AddProductToCart(productToBuy)
+												.ProceedToCheckOut()
+												.GetProductDescription("//table[@id='cart_summary']/tbody/tr[1]/td[contains(@class, 'cart_description')]/p/a")
+											;
+		
+		assertEquals(productToBuy, productDescriptionOnCart);
+		
+		new SummaryPage()
+			.ProceedToCheckout()
+			.FillFields("aaa@aaa.com.br", "Ramon", "Silva", "12345", "10", "December", "1989")
+		;
+	}
+	
+}

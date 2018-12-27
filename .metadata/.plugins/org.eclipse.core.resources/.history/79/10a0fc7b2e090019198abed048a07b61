@@ -1,0 +1,17 @@
+package base;
+
+import static driver.DriverFactory.GetDriver;
+
+import org.openqa.selenium.By;
+
+public class DSL {
+	
+	public void Click(By by) {
+		GetDriver().findElement(by).click();
+	}
+	
+	public void Click(String XPath) {
+		GetDriver().findElement(By.xpath(XPath)).click();
+	}
+	
+}

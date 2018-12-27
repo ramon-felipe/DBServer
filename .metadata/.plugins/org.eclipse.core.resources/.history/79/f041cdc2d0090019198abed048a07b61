@@ -1,0 +1,13 @@
+package pages;
+
+import base.BasePage;
+
+public class AddressPage extends BasePage {
+
+	public ShippingPage ProceedToCheckout() {
+		super.dsl.ClickOnButton("Proceed to checkout");
+				
+		return new ShippingPage();		
+	}
+	
+}

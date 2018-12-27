@@ -1,0 +1,20 @@
+package pages;
+
+import org.openqa.selenium.By;
+
+import base.BasePage;
+
+public class HomePage extends BasePage {
+
+	public HomePage GoTo(String url) {
+		super.GoTo(url);
+		
+		return this;
+	}
+	
+	public HomePage MouseOver(String XPath) {
+		super.MouseOver(By.xpath(XPath));
+		
+		return this;
+	}
+}

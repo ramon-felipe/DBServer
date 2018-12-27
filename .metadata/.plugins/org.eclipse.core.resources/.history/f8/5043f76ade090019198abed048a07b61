@@ -1,0 +1,29 @@
+package pages;
+
+import org.openqa.selenium.By;
+
+import base.BasePage;
+import helper.FileHelper;
+
+public class HomePage extends BasePage {
+
+	public HomePage GoTo(String url) {
+		super.GoTo(url);
+		FileHelper.TakeScreenShot();
+		
+		return this;
+	}
+	
+	public HomePage AddProductToCart(String productName) {
+		super.AddProductToCart(productName);		
+		
+		return this;
+	}
+	
+	public SummaryPage ProceedToCheckOut() {
+		FileHelper.TakeScreenShot();
+		super.dsl.Click(By.xpath("//div[@id='layer_cart']//a[@title='Proceed to checkout']"));
+		
+		return new SummaryPage();
+	}
+}

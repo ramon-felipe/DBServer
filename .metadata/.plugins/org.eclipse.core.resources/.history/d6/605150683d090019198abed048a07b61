@@ -1,0 +1,15 @@
+package helper;
+
+import org.openqa.selenium.support.ui.WebDriverWait;
+import static driver.DriverFactory.GetDriver;
+
+public class WaitHelper {
+
+	private WebDriverWait wait;
+	private final int MAX_WAIT_MILISECONDS = 5000;
+	
+	public WaitHelper() {
+		this.wait = new WebDriverWait(GetDriver(), MAX_WAIT_MILISECONDS);
+	}
+	
+}

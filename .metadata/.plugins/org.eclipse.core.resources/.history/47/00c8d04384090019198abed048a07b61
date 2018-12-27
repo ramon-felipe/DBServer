@@ -1,0 +1,16 @@
+package pages;
+
+import org.openqa.selenium.By;
+
+import base.BasePage;
+
+public class PaymentPage extends BasePage {
+	
+	public double CalculateTotalPrice() {
+		double totalProduct = Double.parseDouble(dsl.GetElementText(By.xpath("//td[@id='total_product']")).substring(1));
+		double totalShipping = Double.parseDouble(dsl.GetElementText(By.xpath("//td[@id='//td[@id='total_shipping']']")).substring(1));
+		double tax = Double.parseDouble(dsl.GetElementText(By.xpath("//td[@id='total_product']")).substring(1));
+		
+		return totalProduct + totalShipping + tax;
+	}
+}

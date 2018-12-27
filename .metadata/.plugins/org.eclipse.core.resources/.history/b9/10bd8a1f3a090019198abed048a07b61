@@ -1,0 +1,13 @@
+package base;
+import org.junit.AfterClass;
+import static driver.DriverFactory.KillDriver;
+
+public class BaseTest {
+
+	@AfterClass
+	public static void tearDownAfterClass() {
+		KillDriver();
+    }
+	
+	
+}

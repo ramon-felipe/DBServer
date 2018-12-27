@@ -1,0 +1,13 @@
+package base;
+
+import static driver.DriverFactory.GetDriver;
+
+public class BasePage extends DSL{
+
+	protected BasePage GoTo(String url) {
+		GetDriver().get(url);
+		
+		return this;
+	}
+	
+}

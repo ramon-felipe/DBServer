@@ -1,0 +1,26 @@
+package pages;
+
+import org.openqa.selenium.By;
+
+import base.BasePage;
+
+public class SignInPage extends BasePage {
+
+	public SignInPage FillEmail(String text) {
+		super.dsl.SendKeys("Email address", text);
+		
+		return this;
+	}
+	
+	public SignInPage FillFields(String email, String firstName, String lastName, String password) {		
+		this.FillEmail(email);
+		super.dsl.Click(By.xpath("//button[@id='SubmitCreate']"));
+		super.dsl.ClickOnRadioButton("Mr.");
+		super.dsl.SendKeys("First name", firstName);
+		super.dsl.SendKeys("Last name", lastName);
+		super.dsl.SendKeys("Password", password);
+		
+		return this;
+	}
+	
+}

@@ -1,0 +1,14 @@
+package helper;
+
+import org.openqa.selenium.support.ui.WebDriverWait;
+import static driver.DriverFactory.GetDriver;
+
+public class WaitHelper {
+
+	private WebDriverWait wait;
+	
+	public WaitHelper() {
+		this.wait = new WebDriverWait(GetDriver());
+	}
+	
+}

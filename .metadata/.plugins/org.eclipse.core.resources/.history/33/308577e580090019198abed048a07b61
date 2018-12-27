@@ -1,0 +1,9 @@
+package pages;
+
+import base.BasePage;
+
+public class AddressPage extends BasePage {
+
+		
+	
+}

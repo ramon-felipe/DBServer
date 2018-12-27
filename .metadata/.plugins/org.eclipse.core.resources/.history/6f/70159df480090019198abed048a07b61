@@ -1,0 +1,15 @@
+package pages;
+
+import base.BasePage;
+
+public class AddressPage extends BasePage {
+
+	public ShippingPage ProceedToCheckout() {
+		super.dsl.ClickOnButton("Proceed to checkout");
+		
+		
+		return new ShippingPage();
+		//label[contains(text(), 'I agree to the terms of service')]
+	}
+	
+}

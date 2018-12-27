@@ -1,0 +1,18 @@
+package helper;
+
+import static driver.DriverFactory.GetDriver;
+
+import java.io.File;
+
+import javax.imageio.ImageIO;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+public class FileHelper {
+
+	public static void TakeScreenShot() {
+		File scrFile = ((TakesScreenshot)GetDriver()).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File("C:\testresults\failed-test.png"));		
+	}
+}

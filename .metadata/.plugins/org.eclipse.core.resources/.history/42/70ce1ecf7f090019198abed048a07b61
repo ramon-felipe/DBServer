@@ -1,0 +1,55 @@
+package tests;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+
+import base.BaseTest;
+import pages.*;
+
+public class ComprasTest extends BaseTest {
+
+	private AddressPage addressPage = new AddressPage();
+	
+	@Test
+	public void RealizarCompra() {
+		
+		String productToBuy = "Blouse";
+		String email = "aaaa" + Integer.toString(super.rnd.nextInt(5000)) + "@aaa.com.br";
+		String firstName = "Ramon";
+		String lastName = "Silva";
+		String fullName = firstName + " " + lastName;
+		String companyName = "DBServer";
+		String address = "Av. das Nações Unidas, 12901";
+		String city = "São Paulo";
+		String state = "Alabama";
+		String postCode = "12345";
+		String cityStatePostCode = city + ", " + state + " " + postCode; 
+		String homePhone = "99999999";
+		String mobilePhone = "88888888";
+		
+		String productDescriptionOnCart = new HomePage()
+												.GoTo("http://www.automationpractice.com")
+												.AddProductToCart(productToBuy)
+												.ProceedToCheckOut()
+												.GetProductDescription("//table[@id='cart_summary']/tbody/tr[1]/td[contains(@class, 'cart_description')]/p/a")
+											;
+		
+		//validates selected product
+		assertEquals(productToBuy, productDescriptionOnCart);
+		
+		new SummaryPage()
+			.ProceedToCheckout()
+			.FillFields(email, firstName, lastName, "12345", "10", "12", "1989", companyName, address, city, state, postCode, homePhone, mobilePhone)
+		;
+		
+		//validates saved/selected address
+		assertEquals(fullName, addressPage.dsl.GetElementText(By.xpath("//ul[@id='address_delivery']/li[@class='address_firstname address_lastname']")));
+		assertEquals(companyName, addressPage.dsl.GetElementText(By.xpath("//ul[@id='address_delivery']/li[@class='address_company']")));
+		assertEquals(address, addressPage.dsl.GetElementText(By.xpath("//ul[@id='address_delivery']/li[@class='address_address1 address_address2']")));
+		assertEquals(cityStatePostCode, addressPage.dsl.GetElementText(By.xpath("//ul[@id='address_delivery']/li[@class='address_city address_state_name address_postcode']")));
+		assertEquals(homePhone, addressPage.dsl.GetElementText(By.xpath("//ul[@id='address_delivery']/li[@class='address_phonee']")));
+		assertEquals(mobilePhone, addressPage.dsl.GetElementText(By.xpath("//ul[@id='address_delivery']/li[@class='address_phone_mobile']")));
+	}
+	
+}

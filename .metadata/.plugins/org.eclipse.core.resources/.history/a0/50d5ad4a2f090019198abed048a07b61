@@ -1,0 +1,12 @@
+package pages;
+
+import base.BasePage;
+
+public class HomePage extends BasePage {
+
+	public HomePage GoTo(String URL) {
+		super.GoTo(URL);
+		
+		return this;
+	}
+}

@@ -1,0 +1,11 @@
+package pages;
+
+import base.BasePage;
+
+public class SignInPage extends BasePage {
+
+	public void InsereEmail(String fieldName, String text) {
+		super.SendKeys("Email address", "aaa@aaa.com.br");
+	}
+	
+}

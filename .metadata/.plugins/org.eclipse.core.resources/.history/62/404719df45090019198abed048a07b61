@@ -1,0 +1,19 @@
+package pages;
+
+import base.BasePage;
+
+public class SignInPage extends BasePage {
+
+	public SignInPage FillEmail(String text) {
+		super.SendKeys("Email address", text);
+		
+		return this;
+	}
+	
+	public SignInPage FillFields(String email) {		
+		this.FillEmail(email);
+		
+		return this;
+	}
+	
+}

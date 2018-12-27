@@ -1,0 +1,18 @@
+package helper;
+
+import java.io.File;
+import java.nio.file.Files;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import static driver.DriverFactory.GetDriver;
+
+public class FileHelper {
+
+	public void TakeScreenShot() {
+		File scrFile = ((TakesScreenshot)GetDriver()).getScreenshotAs(OutputType.FILE);
+		FileUtils
+	}
+	
+}

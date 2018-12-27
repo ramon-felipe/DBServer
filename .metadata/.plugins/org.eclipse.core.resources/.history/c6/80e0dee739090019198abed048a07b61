@@ -1,0 +1,31 @@
+package base;
+
+import static driver.DriverFactory.GetDriver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class DSL {
+	
+	private Actions actions;
+	private WebElement element;
+	
+	public DSL() {
+		this.actions = new Actions(GetDriver());
+	}
+	
+	public void Click(By by) {
+		GetDriver().findElement(by).click();
+	}
+	
+	public void Click(String XPath) {
+		GetDriver().findElement(By.xpath(XPath)).click();
+	}	
+	
+	public void MouseOver(By by) {
+		this.element = GetDriver().findElement(by); 
+		actions.moveToElement(element);
+	}
+	
+}

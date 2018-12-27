@@ -1,0 +1,35 @@
+package base;
+
+import static driver.DriverFactory.GetDriver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+import helper.WaitHelper;
+
+public class DSL {
+	
+	private Actions actions;
+	private WebElement element;
+	private WaitHelper waitHelper;
+	
+	public DSL() {
+		this.actions = new Actions(GetDriver());
+		this.waitHelper = new WaitHelper();
+	}
+	
+	public void Click(By by) {
+		waitHelper.WaitUntilClickable(by).click();
+	}
+	
+	public void Click(String XPath) {
+		waitHelper.WaitUntilClickable(XPath).click();
+	}	
+	
+	public void MouseOver(By by) {
+		this.element = GetDriver().findElement(by); 
+		actions.moveToElement(element).build().perform();
+	}
+	
+}

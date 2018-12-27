@@ -1,0 +1,22 @@
+package base;
+
+import static driver.DriverFactory.GetDriver;
+
+import org.openqa.selenium.By;
+
+public class BasePage extends DSL{
+
+	protected BasePage GoTo(String url) {
+		GetDriver().get(url);
+		
+		return this;
+	}
+	
+	protected BasePage MouveOverProduct(String productName) {
+		String elementXpath = "(//a[normalize-space(text())='" + productName + "']/ancestor::div[contains(@class, 'product-container')])[1]";
+		super.MouseOver(By.xpath(elementXpath));
+		
+		return this;
+	}
+	
+}

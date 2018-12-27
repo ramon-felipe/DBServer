@@ -1,0 +1,54 @@
+package tests;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import base.BaseTest;
+import pages.*;
+
+public class ComprasTest extends BaseTest {
+
+	@Test
+	public void RealizarCompra() {
+		
+		String productToBuy = "Blouse";
+		String firstName = "Ramon";
+		String lastName = "Silva";
+		String companyName = "DBServer";
+		String address = "Av. das Nações Unidas, 12901";
+		String city = "São Paulo";
+		String state = "Alabama";
+		String postCode = "12345";
+		String cityStatePostCode = city + ", " + state + " " + postCode; 
+		String homePhone = "99999999";
+		String mobilePhone = "88888888";
+		
+		String productDescriptionOnCart = new HomePage()
+												.GoTo("http://www.automationpractice.com")
+												.AddProductToCart(productToBuy)
+												.ProceedToCheckOut()
+												.GetProductDescription("//table[@id='cart_summary']/tbody/tr[1]/td[contains(@class, 'cart_description')]/p/a")
+											;
+		
+		assertEquals(productToBuy, productDescriptionOnCart);
+		
+		new SummaryPage()
+			.ProceedToCheckout()
+			.FillFields("aaa@aaa.com.br", 
+						firstName, 
+					    lastName, 
+					    "12345", 
+					    "10", 
+					    "12", 
+					    "1989", 
+					    companyName, 
+					    address,
+					    city,
+					    state,
+					    postCode,
+					    homePhone,
+					    mobilePhone)
+		;
+	}
+	
+}

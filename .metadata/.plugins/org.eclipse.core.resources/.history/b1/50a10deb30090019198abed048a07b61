@@ -1,0 +1,13 @@
+package base;
+import org.junit.jupiter.api.AfterAll;
+import static driver.DriverFactory.KillDriver;
+
+public class BaseTest {
+
+	@AfterAll
+	static void tearDownAll() {
+		KillDriver();
+    }
+	
+	
+}
